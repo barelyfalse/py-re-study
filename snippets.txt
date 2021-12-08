@@ -15,3 +15,13 @@ Anchors
 $       - Final de una cadena
 
 []      - Set de caracteres (para agrupar)
+[^ ]    - No en el set
+|       - Ya sea, o
+( )     - Agrupar
+
+Quantifiers
+*       - 0 o más 
++       - 1 o más
+?       - 0 o uno
+{3}     - Número exacto
+{3,4}   - Rango de números (min,max)

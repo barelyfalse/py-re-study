@@ -17,6 +17,11 @@ MetaChars (needs to be escaped)
 
 Dr. Algo
 Mr. Steve
+Mrs Rob
+Mr. Davis
+Mr Smith
+Ms Smith
+Mr. T
 
 sitiowebpro.com
 
@@ -28,6 +33,9 @@ Ja Jaja Jajaja jaJa
 615.765.4934
 616?651?6187
 616 651 6187
+800-168-1637
+900-613-5613
+
 
 pattern = re.compile(r'')
 matches = pattern.finditer(rawdata)
@@ -129,21 +137,85 @@ def simplephonenummatch():
     matches = pattern.finditer(rawdata)
     for match in matches:
         print(match)
-    #><re.Match object; span=(172, 184), match='316-595-6164'>
-    #><re.Match object; span=(185, 197), match='615.765.4934'>
-    #><re.Match object; span=(198, 210), match='616?651?6187'>
-    #><re.Match object; span=(211, 223), match='616 651 6187'>
+    #> <re.Match object; span=(172, 184), match='316-595-6164'>
+    #> <re.Match object; span=(185, 197), match='615.765.4934'>
+    #> <re.Match object; span=(198, 210), match='616?651?6187'>
+    #> <re.Match object; span=(211, 223), match='616 651 6187'>
+    #> <re.Match object; span=(224, 236), match='800-168-1637'>
+    #> <re.Match object; span=(237, 249), match='900-613-5613'>
     print('----')
     pattern = re.compile(r'\d\d\d[-.]\d\d\d[-.]\d\d\d\d') # [] character set only matching dash and period
     # characters in character sets doesnt have to be scaped
     matches = pattern.finditer(rawdata)
     for match in matches:
         print(match)
-    #><re.Match object; span=(172, 184), match='316-595-6164'>
-    #><re.Match object; span=(185, 197), match='615.765.4934'>
+    #> <re.Match object; span=(172, 184), match='316-595-6164'>
+    #> <re.Match object; span=(185, 197), match='615.765.4934'>
+    #> <re.Match object; span=(224, 236), match='800-168-1637'>
+    #> <re.Match object; span=(237, 249), match='900-613-5613'>
+    print('----')
+    pattern = re.compile(r'[89]00[-.]\d\d\d[-.]\d\d\d\d') # [] character set only matching dash and period and 800 an 900
+    # characters in character sets doesnt have to be scaped
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #> <re.Match object; span=(224, 236), match='800-168-1637'>
+    #> <re.Match object; span=(237, 249), match='900-613-5613'>
+
+def rangesanchor():
+    pattern = re.compile(r'[1-5]') # numbers in range of 1 to 5
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #...
+    #> <re.Match object; span=(34, 35), match='5'>
+    #> <re.Match object; span=(140, 141), match='3'>
+    #> <re.Match object; span=(141, 142), match='2'>
+    #...
+    print('----')
+    pattern = re.compile(r'[^a-z\s]') # everything except lower and spaces
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #...
+    #> <re.Match object; span=(38, 39), match='9'>
+    #> <re.Match object; span=(39, 40), match='0'>
+    #> <re.Match object; span=(42, 43), match='M'>
+    #> <re.Match object; span=(46, 47), match='C'>
+    #> <re.Match object; span=(52, 53), match='('>
+    #...
+    print('----')
+    pattern = re.compile(r'\d{3}[-.]\d{3}[-.]\d{4}')
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #> <re.Match object; span=(172, 184), match='316-595-6164'>
+    #> <re.Match object; span=(185, 197), match='615.765.4934'>
+    #> <re.Match object; span=(224, 236), match='800-168-1637'>
+    #> <re.Match object; span=(237, 249), match='900-613-5613'>
+    print('----')
+    pattern = re.compile(r'Mr\.?\s[A-Z]\w*') # can or not have period and then a word with 1 or more letters
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #> <re.Match object; span=(112, 121), match='Mr. Steve'>
+    #> <re.Match object; span=(130, 139), match='Mr. Davis'>
+    #> <re.Match object; span=(140, 148), match='Mr Smith'>
+    #> <re.Match object; span=(158, 163), match='Mr. T'>
+    print('----')
+    pattern = re.compile(r'M(r|s|rs)\.?\s[A-Z]\w*') # Can be Mr Ms or Mrs and can or not have period and then a word with 1 or more letters
+    matches = pattern.finditer(rawdata)
+    for match in matches:
+        print(match)
+    #> <re.Match object; span=(112, 121), match='Mr. Steve'>
+    #> <re.Match object; span=(122, 129), match='Mrs Rob'>
+    #> <re.Match object; span=(130, 139), match='Mr. Davis'>
+    #> <re.Match object; span=(140, 148), match='Mr Smith'>
+    #> <re.Match object; span=(149, 157), match='Ms Smith'>
+    #> <re.Match object; span=(158, 163), match='Mr. T'>
 
 def main(*args):
-    simplephonenummatch()
+    rangesanchor()
 
 if __name__ == '__main__':
     main()

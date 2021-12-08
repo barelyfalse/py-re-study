@@ -13,3 +13,5 @@ Anchors
 \B      - No un borde de palabra
 ^       - Principio de una cadena
 $       - Final de una cadena
+
+[]      - Set de caracteres (para agrupar)

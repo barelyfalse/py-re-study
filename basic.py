@@ -142,7 +142,6 @@ def simplephonenummatch():
     #><re.Match object; span=(172, 184), match='316-595-6164'>
     #><re.Match object; span=(185, 197), match='615.765.4934'>
 
-
 def main(*args):
     simplephonenummatch()
 

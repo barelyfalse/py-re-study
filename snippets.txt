@@ -25,3 +25,6 @@ Quantifiers
 ?       - 0 o uno
 {3}     - Número exacto
 {3,4}   - Rango de números (min,max)
+
+MetaCharacters
+. ^ $ * + ? { } [ ] \ | ( )

@@ -47,15 +47,26 @@ def hostrecog(host):
     matches = pattern.finditer(rawdata)
     for match in matches:
         print(match)
+    #> <re.Match object; span=(186, 205), match='name.mail@gmail.com'>
+    #> <re.Match object; span=(206, 230), match='name.opmail@gmail.com.ar'>
+    #> <re.Match object; span=(276, 302), match='adriel_hammes@gmail.com.sv'>
+    #> <re.Match object; span=(400, 421), match='ethyl.wiza5@gmail.com'>
+    #> <re.Match object; span=(469, 491), match='caterina.feil@gmail.es'>
+    #> <re.Match object; span=(492, 512), match='terrence68@gmail.com'>
+    #> <re.Match object; span=(558, 584), match='katelynn.murazik@gmail.com'>
+    #> <re.Match object; span=(629, 657), match='gregory.bergnaum65@gmail.com'>
 
 def edurecog():
     pattern = re.compile(r'.+@.+\.edu(\..+)?')
     matches = pattern.finditer(rawdata)
     for match in matches:
-        print(match)  
+        print(match) 
+    #> <re.Match object; span=(103, 126), match='adl.erick@robinhood.edu'>
+    #> <re.Match object; span=(127, 147), match='supermail@ufg.edu.sv'>
+    #> <re.Match object; span=(148, 166), match='ia.stud@ufg.edu.sv'>
 
 def main(*args):
-    hostrecog('gmail')
+    edurecog()
 
 if __name__ == '__main__':
     main()
